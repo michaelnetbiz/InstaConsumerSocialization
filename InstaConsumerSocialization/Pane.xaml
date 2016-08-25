@@ -54,7 +54,7 @@
             x:Name="PaneToggler"
             Canvas.ZIndex="100"
             TabIndex="1"
-            Style="{StaticResource SplitViewPaneTogglerStyle}"
+            Style="{StaticResource PaneTogglerStyle}"
             IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
             Unchecked="PaneToggler_Unchecked"
             Checked="PaneToggler_Checked"
@@ -101,7 +101,7 @@
                         x:Name="FeedbackButton"
                         Grid.Row="2"
                         Grid.Column="1"
-                        Style="{StaticResource SplitViewPaneButtonStyle}"
+                        Style="{StaticResource PaneButtonStyle}"
                         Content="&#xE76E;"
                         AutomationProperties.Name="Feedback"
                         ToolTipService.ToolTip="Feedback"/>
@@ -109,7 +109,7 @@
                         x:Name="SettingsButton"
                         Grid.Row="2"
                         Grid.Column="2"
-                        Style="{StaticResource SplitViewPaneButtonStyle}"
+                        Style="{StaticResource PaneButtonStyle}"
                         Content="&#xE713;"
                         AutomationProperties.Name="Settings"
                         ToolTipService.ToolTip="Settings"/>
