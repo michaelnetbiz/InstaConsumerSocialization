@@ -46,7 +46,7 @@ namespace InstaConsumerSocialization
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 // This just gets in the way.
-                this.DebugSettings.EnableFrameRateCounter = true;
+                //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
             // Change minimum window size

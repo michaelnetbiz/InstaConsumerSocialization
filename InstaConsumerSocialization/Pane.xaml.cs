@@ -1,20 +1,14 @@
-﻿using System;
+﻿using InstaConsumerSocialization.Controls;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using Windows.Foundation;
-using Windows.Foundation.Metadata;
-using Windows.UI.Xaml.Automation;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using InstaConsumerSocialization.Controls;
 
 namespace InstaConsumerSocialization
 {
@@ -30,20 +24,32 @@ namespace InstaConsumerSocialization
             {
                 new PaneItem()
                 {
+                    Symbol = Symbol.Home,
+                    Label = "Home",
+                    DestPage = typeof(MainPage)
+                },
+                new PaneItem()
+                {
+                    Symbol = Symbol.Find,
+                    Label = "Search",
+                    DestPage = typeof(MainPage)
+                },
+                new PaneItem()
+                {
+                    Symbol = Symbol.Like,
+                    Label = "Favorites",
+                    DestPage = typeof(MainPage)
+                },
+                new PaneItem()
+                {
                     Symbol = Symbol.Contact,
-                    Label = "Basic Page",
+                    Label = "Profile",
                     DestPage = typeof(MainPage)
                 },
                 new PaneItem()
                 {
-                    Symbol = Symbol.Edit,
-                    Label = "CommandBar Page",
-                    DestPage = typeof(MainPage)
-                },
-                new PaneItem()
-                {
-                    Symbol = Symbol.Favorite,
-                    Label = "Drill In Page",
+                    Symbol = Symbol.Message,
+                    Label = "Messages",
                     DestPage = typeof(MainPage)
                 },
             });
@@ -83,7 +89,7 @@ namespace InstaConsumerSocialization
             PaneList.ItemsSource = paneList;
         }
 
-        public Frame AppFrame { get { return this.Frame; } }
+        public Frame AppFrame { get { return this.frame; } }
 
         private void TitleBar_IsVisibleChanged(Windows.ApplicationModel.Core.CoreApplicationViewTitleBar sender, object args)
         {
@@ -253,7 +259,7 @@ namespace InstaConsumerSocialization
         /// Public method to allow pages to open SplitView's pane.
         /// Used for custom app shortcuts like navigating left from page's left-most item
         /// </summary>
-        public void OpenNavePane()
+        public void OpenPane()
         {
             PaneToggler.IsChecked = true;
             PaneDivider.Visibility = Visibility.Visible;

@@ -10,13 +10,13 @@
     <x:Double x:Key="LargeWindowSnapPoint">1008</x:Double>
     <!-- padding between window title bar and content-->
     <x:Double x:Key="DesktopWindowTopPadding">12</x:Double>
-    <Style 
+    <Style
         x:Key="PaneTogglerStyle" 
         TargetType="ToggleButton">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontFamily" Value="{StaticResource SymbolThemeFontFamily}"/>
-        <Setter Property="MinHeight" Value="600"/>
-        <Setter Property="MinWidth" Value="06"/>
+        <Setter Property="MinHeight" Value="48"/>
+        <Setter Property="MinWidth" Value="48"/>
         <Setter Property="Margin" Value="0,4,0,0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>

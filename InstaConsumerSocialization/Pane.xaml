@@ -8,14 +8,14 @@
     xmlns:controls="using:InstaConsumerSocialization.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     KeyDown="Pane_KeyDown"
     TabNavigation="Cycle"
-    mc:Ignorable="d">
+    mc:Ignorable="d" 
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <!-- declare reusable resources for the app -->
     <Page.Resources>
         <DataTemplate 
-            x:Key="PaneItemTemplate" 
+            x:Key="PaneItemTemplate"
             x:DataType="local:PaneItem">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -50,6 +50,46 @@
     </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
+        <!-- Adaptive triggers -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource LargeWindowSnapPoint}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="PaneDivider.Visibility" Value="Visible"/>
+                        <Setter Target="FeedbackButton.IsTabStop" Value="True"/>
+                        <Setter Target="SettingsButton.IsTabStop" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource MediumWindowSnapPoint}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="PaneDivider.Visibility" Value="Collapsed"/>
+                        <Setter Target="FeedbackButton.IsTabStop" Value="False"/>
+                        <Setter Target="SettingsButton.IsTabStop" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource MinWindowSnapPoint}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="FeedbackButton.IsTabStop" Value="True"/>
+                        <Setter Target="SettingsButton.IsTabStop" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <ToggleButton
             x:Name="PaneToggler"
             Canvas.ZIndex="100"
@@ -63,8 +103,8 @@
         <SplitView
             x:Name="RootSplitView"
             DisplayMode="Inline"
-            OpenPaneLength="270"
-            PaneBackground="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+            OpenPaneLength="320"
+            PaneBackground="{ThemeResource AppBarBackground}"
             PaneClosed="RootSplitView_PaneClosed"
             LightDismissOverlayMode="On"
             IsTabStop="False">
@@ -117,7 +157,7 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <Frame 
-                    x:Name="Frame"
+                    x:Name="frame"
                     Margin="0,4,0,0"
                     Navigating="OnNavigatingToPage">
                     <Frame.ContentTransitions>
