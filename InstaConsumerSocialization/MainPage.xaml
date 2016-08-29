@@ -6,6 +6,37 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+    <Page.Resources>
+        <DataTemplate x:Key="StimulusTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="stimulusAuthorProfileImage" Text="{Binding StimulusAuthorProfileImagePath}" Margin="0,0,285,0"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Image x:Name="heart" Source="Assets/home.png" Height="300" Width="300"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.DataContext>
+        <local:MainPageData/>
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <GridView
+                x:Name="postGridView"
+                ItemTemplate="{StaticResource StimulusTemplate}"
+                ItemsSource="{Binding Stimuli}"
+                Grid.Row="0"
+                SelectedItem="{Binding SelectedStimulus, Mode=TwoWay}"/>
+        </Grid>
+    </Grid>
 </Page>
