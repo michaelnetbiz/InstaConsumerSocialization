@@ -115,6 +115,26 @@
     <None Include="InstaConsumerSocialization_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cog.png" />
+    <Content Include="Assets\comment-o.png" />
+    <Content Include="Assets\heart.png" />
+    <Content Include="Assets\home.png" />
+    <Content Include="Assets\inbox.png" />
+    <Content Include="Assets\InstaConsumerSocializationLogo.png" />
+    <Content Include="Assets\long-arrow-left.png" />
+    <Content Include="Assets\msu-admissions.png" />
+    <Content Include="Assets\search.png" />
+    <Content Include="Assets\share.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\user.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
