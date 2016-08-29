@@ -10,8 +10,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     KeyDown="Pane_KeyDown"
     TabNavigation="Cycle"
-    mc:Ignorable="d" 
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d"
+    Background="{ThemeResource AppBarBackground}">
     <!-- declare reusable resources for the app -->
     <Page.Resources>
         <DataTemplate 
@@ -135,7 +135,7 @@
                         Grid.Row="1"
                         Grid.ColumnSpan="3"
                         Height="1"
-                        Fill="Orange"
+                        Fill="Black"
                         Margin="16,0,16,6"/>
                     <Button 
                         x:Name="FeedbackButton"
@@ -143,6 +143,7 @@
                         Grid.Column="1"
                         Style="{StaticResource PaneButtonStyle}"
                         Content="&#xE76E;"
+                        IsEnabled="False"
                         AutomationProperties.Name="Feedback"
                         ToolTipService.ToolTip="Feedback"/>
                     <Button 
@@ -151,6 +152,7 @@
                         Grid.Column="2"
                         Style="{StaticResource PaneButtonStyle}"
                         Content="&#xE713;"
+                        IsEnabled="False"
                         AutomationProperties.Name="Settings"
                         ToolTipService.ToolTip="Settings"/>
                 </Grid>

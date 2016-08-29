@@ -21,7 +21,7 @@
         <Setter Property="Padding" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="Background" Value="Orange"/>
+        <Setter Property="Background" Value="{StaticResource AppBarBackground}"/>
         <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
         <Setter Property="Content" Value="&#xE700;"/>
         <Setter Property="AutomationProperties.Name" Value="Navigation"/>
