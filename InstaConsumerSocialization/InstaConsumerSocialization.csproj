@@ -89,6 +89,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Assets\posts.json" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -105,7 +106,9 @@
     <Compile Include="MainPageData.cs" />
     <Compile Include="Models\Caption.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Identifier.cs" />
     <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Incrementer.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Tag.cs" />
@@ -170,6 +173,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '15.0' ">
     <VisualStudioVersion>15.0</VisualStudioVersion>
   </PropertyGroup>

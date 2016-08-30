@@ -17,17 +17,19 @@ namespace InstaConsumerSocialization
         public MainPageData()
         {
             Posts = new ObservableCollection<Post>();
-            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
-            {
-                for (int postId = 1; postId <= 8; postId++)
-                {
-                    _allPosts.Add(new Post());
-                }
-                PerformFiltering();
-            } else
-            {
-                LoadData();
-            }
+            //if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            //{
+            //    for (int postId = 1; postId <= 8; postId++)
+            //    {
+            //        _allPosts.Add(new Post());
+            //    }
+            //    PerformFiltering();
+            //}
+            //else
+            //{
+            //    LoadData();
+            //}
+            LoadData();
         }
 
         private async void LoadData()
@@ -44,7 +46,7 @@ namespace InstaConsumerSocialization
             var lowerCaseFilter = Filter.ToLowerInvariant().Trim();
 
             var result =
-                _allPosts.Where(d => d.PossibleFiltersAsString.ToLowerInvariant()
+                _allPosts.Where(d => d.NamesAsString.ToLowerInvariant()
                 .Contains(lowerCaseFilter))
                 .ToList();
 
@@ -61,7 +63,7 @@ namespace InstaConsumerSocialization
                     Posts.Insert(i, resultItem);
             }
         }
-        private string _greeting;
+        private string _greeting = "Hello world";
         public string Greeting
         {
             get { return _greeting; }
@@ -84,8 +86,8 @@ namespace InstaConsumerSocialization
                 if (value == null)
                     Greeting = "fuck off the value is null";
                 else
-                    Greeting = "fuck off the value is not null";
-                    
+                    Greeting = "Hello " + value.NamesAsString;
+
             }
         }
         private string _filter;
