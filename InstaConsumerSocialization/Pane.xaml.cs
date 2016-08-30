@@ -18,7 +18,7 @@ namespace InstaConsumerSocialization
     public sealed partial class Pane : Page
     {
         private bool isPaddingAdded = false;
-        public static Pane Current = null;
+        
         private List<PaneItem> paneList = new List<PaneItem>(
             new[]
             {
@@ -54,6 +54,8 @@ namespace InstaConsumerSocialization
                 },
             });
 
+        public static Pane Current = null;
+
         /// <summary>
         /// Initializes a new instance of the AppShell, sets the static 'Current' reference,
         /// adds callbacks for Back requests and changes in the SplitView's DisplayMode, and
@@ -67,7 +69,7 @@ namespace InstaConsumerSocialization
             {
                 Current = this;
 
-                this.CheckTogglePaneButtonSizeChanged();
+                this.CheckPaneTogglerSizeChanged();
 
                 var titleBar = Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().TitleBar;
                 titleBar.IsVisibleChanged += TitleBar_IsVisibleChanged;
@@ -77,9 +79,9 @@ namespace InstaConsumerSocialization
                 SplitView.DisplayModeProperty,
                 (s, a) =>
                 {
-                    // Ensure that we update the reported size of the TogglePaneButton when the SplitView's
+                    // Ensure that we update the reported size of the PaneToggler when the SplitView's
                     // DisplayMode changes.
-                    this.CheckTogglePaneButtonSizeChanged();
+                    this.CheckPaneTogglerSizeChanged();
                 });
 
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
@@ -91,6 +93,12 @@ namespace InstaConsumerSocialization
 
         public Frame AppFrame { get { return this.frame; } }
 
+        /// <summary>
+        /// Invoked when window title bar visibility changes, such as after loading or in tablet 
+        /// Ensures correct padding at window top, between title bar and app 
+        /// </summary
+        /// <param name="sender"></param
+        /// <param name="args"></param>
         private void TitleBar_IsVisibleChanged(Windows.ApplicationModel.Core.CoreApplicationViewTitleBar sender, object args)
         {
             if (!this.isPaddingAdded && sender.IsVisible)
@@ -108,6 +116,12 @@ namespace InstaConsumerSocialization
             }
         }
 
+
+        /// <summary>
+        /// Default keyboard focus movement for any unhandled keyboarding
+        /// </summary>
+        /// <param name="sender"></param
+        /// <param name="e"></param>
         private void Pane_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             FocusNavigationDirection direction = FocusNavigationDirection.None;
@@ -152,79 +166,7 @@ namespace InstaConsumerSocialization
             }
         }
 
-        /// <summary>
-        /// Callback when the SplitView's Pane is toggled closed.  When the Pane is not visible
-        /// then the floating hamburger may be occluding other content in the app unless it is aware.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PaneToggler_Checked(object sender, RoutedEventArgs e)
-        {
-            PaneDivider.Visibility = Visibility.Visible;
-            this.CheckTogglePaneButtonSizeChanged();
-
-            FeedbackButton.IsTabStop = true;
-            SettingsButton.IsTabStop = true;
-        }
-
-        private void CheckTogglePaneButtonSizeChanged()
-        {
-            if (this.RootSplitView.DisplayMode == SplitViewDisplayMode.Inline ||
-                this.RootSplitView.DisplayMode == SplitViewDisplayMode.Overlay)
-            {
-                var transform = this.PaneToggler.TransformToVisual(this);
-                var rect = transform.TransformBounds(new Rect(0, 0, this.PaneToggler.ActualWidth, this.PaneToggler.ActualHeight));
-                this.TogglePaneButtonRect = rect;
-            }
-            else
-            {
-                this.TogglePaneButtonRect = new Rect();
-            }
-
-            var handler = this.TogglePaneButtonRectChanged;
-            if (handler != null)
-            {
-                // handler(this, this.TogglePaneButtonRect);
-                handler.DynamicInvoke(this, this.TogglePaneButtonRect);
-            }
-        }
-
-        /// <summary>
-        /// Callback when the SplitView's Pane is toggled closed.  When the Pane is not visible
-        /// then the floating hamburger may be occluding other content in the app unless it is aware.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PaneToggler_Unchecked(object sender, RoutedEventArgs e)
-        {
-            this.CheckTogglePaneButtonSizeChanged();
-        }
-
-        /// <summary>
-        /// Hides divider when nav pane is closed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void RootSplitView_PaneClosed(SplitView sender, object args)
-        {
-            PaneDivider.Visibility = Visibility.Collapsed;
-
-            // Prevent focus from moving to elements when they're not visible on screen
-            FeedbackButton.IsTabStop = false;
-            SettingsButton.IsTabStop = false;
-        }
-
-        private void PaneItemContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
-        {
-            if (!args.InRecycleQueue && args.Item != null && args.Item is PaneItem)
-            {
-                args.ItemContainer.SetValue(AutomationProperties.NameProperty, ((PaneItem)args.Item).Label);
-            }
-            else
-            {
-                args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
-            }
-        }
+        #region BackRequested Handlers
 
         private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
         {
@@ -249,34 +191,40 @@ namespace InstaConsumerSocialization
             }
         }
 
-        /// <summary>
-        /// An event to notify listeners when the hamburger button may occlude other content in the app.
-        /// The custom "PageHeader" user control is using this.
-        /// </summary>
-        public event TypedEventHandler<Pane, Rect> TogglePaneButtonRectChanged;
-
-        /// <summary>
-        /// Public method to allow pages to open SplitView's pane.
-        /// Used for custom app shortcuts like navigating left from page's left-most item
-        /// </summary>
-        public void OpenPane()
-        {
-            PaneToggler.IsChecked = true;
-            PaneDivider.Visibility = Visibility.Visible;
-        }
-
-        public Rect TogglePaneButtonRect
-        {
-            get;
-            private set;
-        }
+        #endregion
 
         #region Navigation
-        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs args)
+
+        /// <summary>
+        /// Navigate to the Page for the selected <paramref name="listViewItem"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="listViewItem"></param>
+        private void PaneList_ItemInvoked(object sender, ListViewItem listViewItem)
         {
-            if (args.NavigationMode == NavigationMode.Back)
+            foreach (var i in paneList)
             {
-                var item = (from p in this.paneList where p.DestPage == args.SourcePageType select p).SingleOrDefault();
+                i.IsSelected = false;
+            }
+
+            var item = (PaneItem)((PaneListView)sender).ItemFromContainer(listViewItem);
+
+            if (item != null)
+            {
+                item.IsSelected = true;
+                if (item.DestPage != null &&
+                    item.DestPage != this.AppFrame.CurrentSourcePageType)
+                {
+                    this.AppFrame.Navigate(item.DestPage, item.Arguments);
+                }
+            }
+        }
+
+        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.NavigationMode == NavigationMode.Back)
+            {
+                var item = (from p in this.paneList where p.DestPage == e.SourcePageType select p).SingleOrDefault();
                 if (item == null && this.AppFrame.BackStackDepth > 0)
                 {
                     // In cases where a page drills into sub-pages then we'll highlight the most recent
@@ -309,25 +257,109 @@ namespace InstaConsumerSocialization
             }
         }
 
-        private void PaneList_ItemInvoked(object sender, ListViewItem e)
+        #endregion
+
+        public Rect PaneTogglerRect
         {
-            foreach (var i in paneList)
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// An event to notify listeners when the hamburger button may occlude other content in the app.
+        /// The custom "PageHeader" user control is using this.
+        /// </summary>
+        public event TypedEventHandler<Pane, Rect> PaneTogglerRectChanged;
+
+        /// <summary>
+        /// Public method to allow pages to open SplitView's pane.
+        /// Used for custom app shortcuts like navigating left from page's left-most item
+        /// </summary>
+        public void OpenPane()
+        {
+            PaneToggler.IsChecked = true;
+            PaneDivider.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Hides divider when nav pane is closed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void RootSplitView_PaneClosed(SplitView sender, object args)
+        {
+            PaneDivider.Visibility = Visibility.Collapsed;
+
+            // Prevent focus from moving to elements when they're not visible on screen
+            FeedbackButton.IsTabStop = false;
+            SettingsButton.IsTabStop = false;
+        }
+
+        /// <summary>
+        /// Callback when the SplitView's Pane is toggled closed.  When the Pane is not visible
+        /// then the floating hamburger may be occluding other content in the app unless it is aware.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PaneToggler_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.CheckPaneTogglerSizeChanged();
+        }
+
+        /// <summary>
+        /// Callback when the SplitView's Pane is toggled closed.  When the Pane is not visible
+        /// then the floating hamburger may be occluding other content in the app unless it is aware.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PaneToggler_Checked(object sender, RoutedEventArgs e)
+        {
+            PaneDivider.Visibility = Visibility.Visible;
+            this.CheckPaneTogglerSizeChanged();
+
+            FeedbackButton.IsTabStop = true;
+            SettingsButton.IsTabStop = true;
+        }
+
+        private void CheckPaneTogglerSizeChanged()
+        {
+            if (this.RootSplitView.DisplayMode == SplitViewDisplayMode.Inline ||
+                this.RootSplitView.DisplayMode == SplitViewDisplayMode.Overlay)
             {
-                i.IsSelected = false;
+                var transform = this.PaneToggler.TransformToVisual(this);
+                var rect = transform.TransformBounds(new Rect(0, 0, this.PaneToggler.ActualWidth, this.PaneToggler.ActualHeight));
+                this.PaneTogglerRect = rect;
+            }
+            else
+            {
+                this.PaneTogglerRect = new Rect();
             }
 
-            var item = (PaneItem)((PaneListView)sender).ItemFromContainer(e);
-
-            if (item != null)
+            var handler = this.PaneTogglerRectChanged;
+            if (handler != null)
             {
-                item.IsSelected = true;
-                if (item.DestPage != null &&
-                    item.DestPage != this.AppFrame.CurrentSourcePageType)
-                {
-                    this.AppFrame.Navigate(item.DestPage, item.Arguments);
-                }
+                // handler(this, this.PaneTogglerRect);
+                handler.DynamicInvoke(this, this.PaneTogglerRect);
             }
         }
-        #endregion
+
+
+        /// <summary>
+        /// Enable accessibility on each nav menu item by setting the AutomationProperties.Name on each container
+        /// using the associated Label of each item.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void PaneItemContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            if (!args.InRecycleQueue && args.Item != null && args.Item is PaneItem)
+            {
+                args.ItemContainer.SetValue(AutomationProperties.NameProperty, ((PaneItem)args.Item).Label);
+            }
+            else
+            {
+                args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
+            }
+        }
     }
 }

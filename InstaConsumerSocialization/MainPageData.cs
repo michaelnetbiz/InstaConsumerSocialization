@@ -57,7 +57,18 @@ namespace InstaConsumerSocialization
                 }
             }
         }
-
+        private string _greeting;
+        public string Greeting
+        {
+            get { return _greeting; }
+            set
+            {
+                if (value == _greeting)
+                    return;
+                _greeting = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Greeting)));
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private Stimulus _selectedStimulus;
         public Stimulus SelectedStimulus
@@ -67,9 +78,9 @@ namespace InstaConsumerSocialization
             {
                 _selectedStimulus = value;
                 if (value == null)
-                    log.WriteLine(true);
+                    Greeting = "fuck off the value is null";
                 else
-                    log.WriteLine(false);
+                    Greeting = "fuck off the value is not null";
                     
             }
         }

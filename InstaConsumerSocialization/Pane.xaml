@@ -44,7 +44,7 @@
                     Text="{x:Bind Label}"
                     Style="{StaticResource BodyTextBlockStyle}"
                     TextWrapping="NoWrap"
-                    Margin="0,0,16,0"/>
+                    VerticalAlignment="Center"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
