@@ -17,7 +17,7 @@ namespace InstaConsumerSocialization
         public MainPageData()
         {
             Stimuli = new ObservableCollection<Stimulus>();
-            for (int stimulusId = 1; stimulusId <= 20; stimulusId++)
+            for (int stimulusId = 1; stimulusId <= 8; stimulusId++)
             {
                 _allStimuli.Add(new Stimulus(
                     stimulusId,

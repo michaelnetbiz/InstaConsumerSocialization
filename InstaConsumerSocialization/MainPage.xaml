@@ -15,11 +15,17 @@
                     <RowDefinition Height="300"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <CommandBar>
+                    </CommandBar>
+                </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock x:Name="stimulusAuthorProfileImage" Text="{Binding StimulusAuthorProfileImagePath}" Margin="0,0,285,0"/>
+                    <Image x:Name="heart" Source="{Binding StimulusImagePath}" Height="300" Width="300"/>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <Image x:Name="heart" Source="Assets/home.png" Height="300" Width="300"/>
+                    <CommandBar>
+                        
+                    </CommandBar>
                 </Grid>
             </Grid>
         </DataTemplate>
