@@ -56,15 +56,15 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         <controls:PageHeader x:Name="pageHeader">
             <controls:PageHeader.HeaderContent>
-                <TextBlock x:Name="title" Style="{StaticResource PageTitleTextBlockStyle}" Text="InstaConsumerSocialization"/>
+                <TextBlock x:Name="title" Style="{StaticResource PageTitleTextBlockStyle}" Text=""/>
             </controls:PageHeader.HeaderContent>
         </controls:PageHeader>
-        <Grid Grid.Row="1" EntranceNavigationTransitionInfo.IsTargetElement="True" Margin="12,4,0,0">
+        <Grid Grid.Column="1" EntranceNavigationTransitionInfo.IsTargetElement="True" Margin="12,4,0,0">
             <GridView
                 x:Name="postGridView"
                 Margin="12,0,24,0"
