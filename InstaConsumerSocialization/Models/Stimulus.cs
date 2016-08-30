@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InstaConsumerSocialization
+namespace InstaConsumerSocialization.Models
 {
     public class Stimulus
     {
@@ -42,7 +42,6 @@ namespace InstaConsumerSocialization
             NumberOfFavorites = numberOfFavorites;
             NumberOfResponses = numberOfResponses;
         }
-
         public string StimuliNamesAsString => string.Join(", ", StimulusName);
     }
 }

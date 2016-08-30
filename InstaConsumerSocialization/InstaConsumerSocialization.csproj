@@ -103,12 +103,13 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPageData.cs" />
+    <Compile Include="Models\Participant.cs" />
     <Compile Include="Pane.xaml.cs">
       <DependentUpon>Pane.xaml</DependentUpon>
     </Compile>
     <Compile Include="PaneItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stimulus.cs" />
+    <Compile Include="Models\Stimulus.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
