@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="StimulusTemplate">
+        <DataTemplate x:Key="PostTemplate">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"/>
@@ -20,11 +20,10 @@
                     </CommandBar>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <Image x:Name="heart" Source="{Binding StimulusImagePath}" Height="300" Width="300"/>
+                    <Image x:Name="image" Source="{Binding Image}" Height="300" Width="300"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <CommandBar>
-                        
                     </CommandBar>
                 </Grid>
             </Grid>
@@ -68,10 +67,10 @@
             <GridView
                 x:Name="postGridView"
                 Margin="12,0,24,0"
-                ItemTemplate="{StaticResource StimulusTemplate}"
-                ItemsSource="{Binding Stimuli}"
+                ItemTemplate="{StaticResource PostTemplate}"
+                ItemsSource="{Binding Posts}"
                 Grid.Row="0"
-                SelectedItem="{Binding SelectedStimulus, Mode=TwoWay}"/>
+                SelectedItem="{Binding SelectedPost, Mode=TwoWay}"/>
         </Grid>
     </Grid>
 </Page>

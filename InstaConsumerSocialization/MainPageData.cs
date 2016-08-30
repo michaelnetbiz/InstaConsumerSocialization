@@ -12,50 +12,53 @@ namespace InstaConsumerSocialization
 {
     public class MainPageData : INotifyPropertyChanged
     {
-        StreamWriter log;
-        private List<Stimulus> _allStimuli = new List<Stimulus>();
-        public ObservableCollection<Stimulus> Stimuli { get; set; }
+        private List<Post> _allPosts = new List<Post>();
+        public ObservableCollection<Post> Posts { get; set; }
         public MainPageData()
         {
-            Stimuli = new ObservableCollection<Stimulus>();
-            for (int stimulusId = 1; stimulusId <= 8; stimulusId++)
+            Posts = new ObservableCollection<Post>();
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
-                _allStimuli.Add(new Stimulus(
-                    stimulusId,
-                    "Stimulus Name For Stimulus No. " + stimulusId,
-                    "Stimulus Caption For Stimulus No. " + stimulusId,
-                    "Assets/stimuli/stimulus-" + stimulusId + ".png",
-                    "Assets/stimuli/stimulus-" + stimulusId + ".png",
-                    new DateTime(),
-                    stimulusId,
-                    new List<String>(),
-                    false,
-                    stimulusId,
-                    stimulusId
-                    ));
+                for (int postId = 1; postId <= 8; postId++)
+                {
+                    _allPosts.Add(new Post());
+                }
+                PerformFiltering();
+            } else
+            {
+                LoadData();
             }
+        }
+
+        private async void LoadData()
+        {
+            _allPosts = await PostRepository.GetAllStimuliAsync();
             PerformFiltering();
         }
 
         private void PerformFiltering()
         {
             if (_filter == null)
-            {
                 _filter = "";
-            }
+
             var lowerCaseFilter = Filter.ToLowerInvariant().Trim();
-            var result = _allStimuli.Where(d => d.StimuliNamesAsString.ToLowerInvariant().Contains(lowerCaseFilter)).ToList();
-            var toRemove = Stimuli.Except(result).ToList();
+
+            var result =
+                _allPosts.Where(d => d.PossibleFiltersAsString.ToLowerInvariant()
+                .Contains(lowerCaseFilter))
+                .ToList();
+
+            var toRemove = Posts.Except(result).ToList();
+
             foreach (var x in toRemove)
-                Stimuli.Remove(x);
+                Posts.Remove(x);
+
             var resultCount = result.Count;
             for (int i = 0; i < resultCount; i++)
             {
                 var resultItem = result[i];
-                if (i + 1 > Stimuli.Count || !Stimuli[i].Equals(resultItem))
-                {
-                    Stimuli.Insert(i, resultItem);
-                }
+                if (i + 1 > Posts.Count || !Posts[i].Equals(resultItem))
+                    Posts.Insert(i, resultItem);
             }
         }
         private string _greeting;
@@ -71,13 +74,13 @@ namespace InstaConsumerSocialization
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        private Stimulus _selectedStimulus;
-        public Stimulus SelectedStimulus
+        private Post _selectedPost;
+        public Post SelectedPost
         {
-            get { return _selectedStimulus; }
+            get { return _selectedPost; }
             set
             {
-                _selectedStimulus = value;
+                _selectedPost = value;
                 if (value == null)
                     Greeting = "fuck off the value is null";
                 else
