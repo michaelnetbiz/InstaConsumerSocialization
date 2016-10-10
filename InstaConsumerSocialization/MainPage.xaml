@@ -20,7 +20,7 @@
                     </CommandBar>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <Image x:Name="image" Source="Assets/SmallTile.scale-400.png" Height="300" Width="300"/>
+                    <Image x:Name="image" Source="Assets/2.png" Height="300" Width="300"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <CommandBar Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderThickness="10" BorderBrush="{ThemeResource AppBarBackground}" Canvas.ZIndex="100">

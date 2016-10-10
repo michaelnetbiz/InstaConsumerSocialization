@@ -17,7 +17,7 @@ namespace InstaConsumerSocialization
         {
             if (AllPostsCache != null)
                 return AllPostsCache;
-            HttpClient http = new System.Net.Http.HttpClient();
+            HttpClient http = new HttpClient();
             http.DefaultRequestHeaders.Add("accept", "Application/JSON");
             string result = await http.GetStringAsync("http://beta.json-generator.com/api/json/get/N14ZKoR9b");
             //var stream = await client.GetStreamAsync("http://beta.json-generator.com/api/json/get/N14ZKoR9b");
