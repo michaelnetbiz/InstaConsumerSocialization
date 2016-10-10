@@ -18,7 +18,7 @@ namespace InstaConsumerSocialization
     public sealed partial class Pane : Page
     {
         private bool isPaddingAdded = false;
-        
+
         private List<PaneItem> paneList = new List<PaneItem>(
             new[]
             {

@@ -37,14 +37,14 @@
                     Glyph="{x:Bind SymbolAsChar}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    ToolTipService.ToolTip="{x:Bind Label}" />
+                    ToolTipService.ToolTip="{x:Bind Label}" FocusVisualPrimaryBrush="{ThemeResource ButtonBackgroundDisabled}" Foreground="{ThemeResource ButtonBackgroundDisabled}" />
                 <TextBlock
                     x:Name="Text"
                     Grid.Column="1"
                     Text="{x:Bind Label}"
                     Style="{StaticResource BodyTextBlockStyle}"
                     TextWrapping="NoWrap"
-                    VerticalAlignment="Center"/>
+                    VerticalAlignment="Center" FocusVisualPrimaryBrush="{ThemeResource ButtonBackgroundDisabled}" Foreground="{ThemeResource ButtonBackgroundDisabled}"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -126,6 +126,7 @@
                         Grid.ColumnSpan="3"
                         TabIndex="3"
                         Margin="0,52,0,0"
+                        IsHitTestVisible="False"
                         ContainerContentChanging="PaneItemContainerContentChanging"
                         ItemContainerStyle="{StaticResource PaneItemContainerStyle}"
                         ItemTemplate="{StaticResource PaneItemTemplate}"
