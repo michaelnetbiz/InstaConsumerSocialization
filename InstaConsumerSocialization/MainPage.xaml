@@ -16,8 +16,17 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <CommandBar Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderThickness="10" BorderBrush="{ThemeResource AppBarBackground}">
-                    </CommandBar>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="50" Height="50">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageUri}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Text="{Binding Author, Mode=OneWay}"/>
+                        <TextBlock Text="{Binding CreationDay, Mode=OneWay}"/>
+                        <TextBlock Text="{Binding CreationMonth, Mode=OneWay}"/>
+                        <TextBlock Text="{Binding CreationYear, Mode=OneWay}"/>
+                    </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Image x:Name="image" Source="{Binding ImageUri, Mode=OneWay}" Height="300" Width="300"/>
