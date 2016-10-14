@@ -25,8 +25,8 @@
                 <Grid Grid.Row="2">
                     <CommandBar Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderThickness="10" BorderBrush="{ThemeResource AppBarBackground}" Canvas.ZIndex="100">
                         <AppBarToggleButton Icon="Like" Label="Like" />
-                        <AppBarToggleButton Icon="Comment" Label="Comment" />
-                        <AppBarToggleButton Icon="ReShare" Label="Share" />
+                        <AppBarToggleButton Icon="Comment" Label="Comment" IsHitTestVisible="False" FocusVisualPrimaryBrush="{ThemeResource ButtonBackgroundDisabled}" Foreground="{ThemeResource ButtonBackgroundDisabled}" />
+                        <AppBarToggleButton Icon="ReShare" Label="Share" IsHitTestVisible="False" FocusVisualPrimaryBrush="{ThemeResource ButtonBackgroundDisabled}" Foreground="{ThemeResource ButtonBackgroundDisabled}" />
                     </CommandBar>
                 </Grid>
             </Grid>
