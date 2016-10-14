@@ -13,7 +13,7 @@ namespace InstaConsumerSocialization
     {
         public static List<Post> allPostsCache { get; private set; }
 
-        public static async Task<List<Post>> GetAllStimuliAsync()
+        public static async Task<List<Post>> GetAllPostsAsync()
         {
             if (allPostsCache != null)
                 return allPostsCache;

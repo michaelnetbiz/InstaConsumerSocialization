@@ -34,7 +34,7 @@ namespace InstaConsumerSocialization
 
         private async void LoadData()
         {
-            _allPosts = await PostRepository.GetAllStimuliAsync();
+            _allPosts = await PostRepository.GetAllPostsAsync();
             PerformFiltering();
         }
 
