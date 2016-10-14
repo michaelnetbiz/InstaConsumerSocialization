@@ -18,13 +18,15 @@ namespace InstaConsumerSocialization.Models
         [DataMember]
         public string Author { get; set; }
         [DataMember]
+        public Uri AuthorImageUri { get; set; }
+        [DataMember]
         public string Caption { get; set; }
         [DataMember]
         public int LikesNumber { get; set; }
         [DataMember]
         public int CommentsNumber { get; set; }
         [DataMember]
-        public Uri ImageUri { get; set; }
+        public Uri PostImageUri { get; set; }
 
         public string NamesAsString => string.Join(", ", new[]
 {
