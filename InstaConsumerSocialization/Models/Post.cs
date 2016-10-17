@@ -27,9 +27,11 @@ namespace InstaConsumerSocialization.Models
         public int CommentsNumber { get; set; }
         [DataMember]
         public Uri PostImageUri { get; set; }
+        [DataMember]
+        public string TimeSince { get; set; }
 
         public string NamesAsString => string.Join(", ", new[]
-{
+        {
             "lol"
         });
     }
