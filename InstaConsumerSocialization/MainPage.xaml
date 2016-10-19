@@ -27,11 +27,11 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <Image x:Name="image" Source="{Binding PostImageUri, Mode=OneWay}" Height="300" Width="300"/>
+                    <Image x:Name="image" Source="{Binding PostImageUri, Mode=OneWay}" Height="300" Width="300"/> <!--DoubleTapped="EventHandler"-->
                 </Grid>
                 <Grid Grid.Row="2">
                     <CommandBar Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" BorderThickness="10" BorderBrush="{ThemeResource AppBarBackground}" Canvas.ZIndex="100">
-                        <AppBarToggleButton Icon="Like" Label="Like" />
+                        <AppBarToggleButton BorderBrush="{Binding IsLiked, Mode=TwoWay}" Icon="Like" Label="Like"/> <!--Tapped="EventHandler"-->
                         <AppBarToggleButton Icon="Comment" Label="Comment" IsHitTestVisible="False" FocusVisualPrimaryBrush="{ThemeResource ButtonBackgroundDisabled}" Foreground="{ThemeResource ButtonBackgroundDisabled}" />
                         <AppBarToggleButton Icon="ReShare" Label="Share" IsHitTestVisible="False" FocusVisualPrimaryBrush="{ThemeResource ButtonBackgroundDisabled}" Foreground="{ThemeResource ButtonBackgroundDisabled}" />
                     </CommandBar>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InstaConsumerSocialization.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +14,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace InstaConsumerSocialization
 {
     /// <summary>
@@ -25,6 +24,30 @@ namespace InstaConsumerSocialization
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void EventHandler(Post sender, GridViewItem itemInvoked)
+        {
+            if (sender.IsLiked == false)
+            {
+                sender.IsLiked = true;
+            }
+            else
+            {
+                sender.IsLiked = false;
+            }
+        }
+
+        private void EventHandler(Post sender, TappedRoutedEventArgs e)
+        {
+            if (sender.IsLiked == false)
+            {
+                sender.IsLiked = true;
+            }
+            else
+            {
+                sender.IsLiked = false;
+            }
         }
     }
 }
