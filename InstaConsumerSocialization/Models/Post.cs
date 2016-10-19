@@ -22,6 +22,8 @@ namespace InstaConsumerSocialization.Models
         [DataMember]
         public string Caption { get; set; }
         [DataMember]
+        public bool IsLiked { get; set; }
+        [DataMember]
         public int LikesNumber { get; set; }
         [DataMember]
         public int CommentsNumber { get; set; }
