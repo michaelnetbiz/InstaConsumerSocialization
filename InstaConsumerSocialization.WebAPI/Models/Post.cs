@@ -18,6 +18,7 @@ namespace InstaConsumerSocialization.WebAPI.Models
         public int LikesNumber { get; set; }
         public int CommentsNumber { get; set; }
         public Uri PostImageUri { get; set; }
-        public string TimeSince => string.Concat(Math.Round((Decimal)TimeLOL.TotalDays, 0, MidpointRounding.AwayFromZero), "d");
+        public TimeSpan TimeSince => DateTime.Now - new DateTime(this.CreationYear, this.CreationMonth, this.CreationDay);
+        public string TimeSinceStringified => string.Concat(Math.Round((Decimal)TimeSince.TotalDays, 0, MidpointRounding.AwayFromZero), "d");
     }
 }
