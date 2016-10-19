@@ -30,7 +30,7 @@ namespace InstaConsumerSocialization.Models
         [DataMember]
         public Uri PostImageUri { get; set; }
         [DataMember]
-        public string TimeSince { get; set; }
+        public string TimeSinceStringified { get; set; }
 
         public string NamesAsString => string.Join(", ", new[]
         {

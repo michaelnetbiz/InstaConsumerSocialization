@@ -23,7 +23,7 @@
                             </Ellipse.Fill>
                         </Ellipse>
                         <TextBlock Text="{Binding Author, Mode=OneWay}" Padding="10,20,20,20" TextAlignment="Right"/>
-                        <TextBlock Text="{Binding TimeSince, Mode=OneWay}" Padding="120,20,20,20" TextAlignment="Right"/>
+                        <TextBlock Text="{Binding TimeSinceStringified, Mode=OneWay}" Padding="120,20,20,20" TextAlignment="Right"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1">

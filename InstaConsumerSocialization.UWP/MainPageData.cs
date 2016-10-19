@@ -14,21 +14,16 @@ namespace InstaConsumerSocialization
     {
         private List<Post> _allPosts = new List<Post>();
 
-        private List<Author> _allAuthors = new List<Author>();
-
-        public ObservableCollection<Author> Authors { get; set; }
         public ObservableCollection<Post> Posts { get; set; }
         public MainPageData()
         {
             Posts = new ObservableCollection<Post>();
-            Authors = new ObservableCollection<Author>();
             LoadData();
         }
 
         private async void LoadData()
         {
             _allPosts = await PostRepository.GetAllPostsAsync();
-            _allAuthors = await AuthorRepository.GetAllAuthorsAsync();
             PerformFiltering();
         }
 

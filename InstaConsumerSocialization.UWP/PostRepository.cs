@@ -40,7 +40,7 @@ namespace InstaConsumerSocialization
             if (allPostsCache != null)
                 return allPostsCache;
             var httpClient = new HttpClient();
-            var stream = await httpClient.GetStreamAsync("http://icswebservice20161010034859.azurewebsites.net/api/posts");
+            var stream = await httpClient.GetStreamAsync("http://instaconsumersocializationwebapi.azurewebsites.net/api/posts");
             var serializer = new DataContractJsonSerializer(typeof(List<Post>));
             allPostsCache = (List<Post>)serializer.ReadObject(stream);
             ShufflePosts();
