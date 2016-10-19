@@ -7,8 +7,8 @@
     <ProjectGuid>{5EEE058E-64E9-47B7-B8BD-24A555173B6F}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InstaConsumerSocialization</RootNamespace>
-    <AssemblyName>InstaConsumerSocialization</AssemblyName>
+    <RootNamespace>InstaConsumerSocialization.UWP</RootNamespace>
+    <AssemblyName>InstaConsumerSocialization.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
