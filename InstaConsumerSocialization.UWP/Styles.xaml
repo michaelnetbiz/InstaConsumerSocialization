@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:InstaConsumerSocialization">
+    xmlns:local="using:InstaConsumerSocialization.UWP">
     <SolidColorBrush x:Key="SplitViewLightDismissOverlayBackground" Opacity="0.6" Color="{ThemeResource SystemChromeLowColor}"/>
 
     <!-- window width adaptive snap points-->

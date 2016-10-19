@@ -1,4 +1,4 @@
-﻿using InstaConsumerSocialization.Controls;
+﻿using InstaConsumerSocialization.UWP.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
-namespace InstaConsumerSocialization
+namespace InstaConsumerSocialization.UWP
 {
     /// <summary>
     /// The chrome layer of the app.

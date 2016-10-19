@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 
-namespace InstaConsumerSocialization
+namespace InstaConsumerSocialization.UWP
 {
     class ActivityRegistrar
     {

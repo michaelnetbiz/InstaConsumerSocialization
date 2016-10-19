@@ -1,4 +1,4 @@
-﻿using InstaConsumerSocialization.Models;
+﻿using InstaConsumerSocialization.UWP.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace InstaConsumerSocialization
+namespace InstaConsumerSocialization.UWP
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

@@ -1,9 +1,9 @@
 ﻿<UserControl
     x:Name="Root"
-    x:Class="InstaConsumerSocialization.Controls.PageHeader"
+    x:Class="InstaConsumerSocialization.UWP.Controls.PageHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:InstaConsumerSocialization"
+    xmlns:local="using:InstaConsumerSocialization.UWP"
     VerticalAlignment="Top"
     VerticalContentAlignment="Top"
     HorizontalAlignment="Stretch"

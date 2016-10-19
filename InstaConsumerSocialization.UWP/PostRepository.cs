@@ -1,4 +1,4 @@
-﻿using InstaConsumerSocialization.Models;
+﻿using InstaConsumerSocialization.UWP.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Newtonsoft.Json;
 
-namespace InstaConsumerSocialization
+namespace InstaConsumerSocialization.UWP
 {
     public static class PostRepository
     {
