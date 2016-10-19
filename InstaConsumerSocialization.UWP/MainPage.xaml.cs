@@ -28,25 +28,25 @@ namespace InstaConsumerSocialization
 
         private void EventHandler(Post sender, GridViewItem itemInvoked)
         {
-            if (sender.IsLiked == false)
+            if (sender.IsLikedByUser == false)
             {
-                sender.IsLiked = true;
+                sender.IsLikedByUser = true;
             }
             else
             {
-                sender.IsLiked = false;
+                sender.IsLikedByUser = false;
             }
         }
 
         private void EventHandler(Post sender, TappedRoutedEventArgs e)
         {
-            if (sender.IsLiked == false)
+            if (sender.IsLikedByUser == false)
             {
-                sender.IsLiked = true;
+                sender.IsLikedByUser = true;
             }
             else
             {
-                sender.IsLiked = false;
+                sender.IsLikedByUser = false;
             }
         }
     }
