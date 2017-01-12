@@ -4,11 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaConsumerSocialization.UWP", "InstaConsumerSocialization.UWP\InstaConsumerSocialization.UWP.csproj", "{5EEE058E-64E9-47B7-B8BD-24A555173B6F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E} = {CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaConsumerSocialization.WebAPI", "InstaConsumerSocialization.WebAPI\InstaConsumerSocialization.WebAPI.csproj", "{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,22 +37,6 @@ Global
 		{5EEE058E-64E9-47B7-B8BD-24A555173B6F}.Release|x86.ActiveCfg = Release|x86
 		{5EEE058E-64E9-47B7-B8BD-24A555173B6F}.Release|x86.Build.0 = Release|x86
 		{5EEE058E-64E9-47B7-B8BD-24A555173B6F}.Release|x86.Deploy.0 = Release|x86
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|ARM.Build.0 = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|x64.Build.0 = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Debug|x86.Build.0 = Debug|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|ARM.ActiveCfg = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|ARM.Build.0 = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|x64.ActiveCfg = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|x64.Build.0 = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|x86.ActiveCfg = Release|Any CPU
-		{CEAF1A5F-BFD1-4A5A-8231-890D0664BA8E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

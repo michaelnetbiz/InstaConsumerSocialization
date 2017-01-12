@@ -4,34 +4,22 @@ using System.Linq;
 using System.Runtime.Serialization;
 
 namespace InstaConsumerSocialization.UWP.Models
-{   [DataContract]
+{
     public class Post
     {
-        [DataMember]
         public string Id { get; set; }
-        [DataMember]
         public int CreationDay { get; set; }
-        [DataMember]
         public int CreationMonth { get; set; }
-        [DataMember]
         public int CreationYear { get; set; }
-        [DataMember]
         public string Author { get; set; }
-        [DataMember]
         public Uri AuthorImageUri { get; set; }
-        [DataMember]
         public string Caption { get; set; }
-        [DataMember]
         public bool IsLikedByUser { get; set; }
-        [DataMember]
         public int LikesNumber { get; set; }
-        [DataMember]
         public int CommentsNumber { get; set; }
-        [DataMember]
         public Uri PostImageUri { get; set; }
-        [DataMember]
-        public string TimeSinceStringified { get; set; }
-
+        public TimeSpan TimeSince => DateTime.Now - new DateTime(this.CreationYear, this.CreationMonth, this.CreationDay);
+        public string TimeSinceStringified => string.Concat(Math.Round((Decimal)TimeSince.TotalDays, 0, MidpointRounding.AwayFromZero), "d");
         public string NamesAsString => string.Join(", ", new[]
         {
             "lol"

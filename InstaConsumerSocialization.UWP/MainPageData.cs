@@ -23,7 +23,7 @@ namespace InstaConsumerSocialization.UWP
 
         private async void LoadData()
         {
-            _allPosts = await PostRepository.GetAllPostsAsync();
+            _allPosts = PostRepository.GetAllPosts();
             PerformFiltering();
         }
 
